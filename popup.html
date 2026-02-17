@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      width: 420px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 18px;
+      margin: 0 0 16px 0;
+      color: #0a66c2;
+    }
+    .section {
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-weight: 600;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .row label {
+      font-size: 13px;
+      min-width: 50px;
+    }
+    select {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 13px;
+      flex: 1;
+    }
+    .checkboxes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+    }
+    .checkbox-item input {
+      margin: 0;
+    }
+    button {
+      background: #0a66c2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 24px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    button:hover {
+      background: #004182;
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    #status {
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      display: none;
+      font-size: 13px;
+    }
+    #status.error {
+      background: #fee;
+      color: #c00;
+      display: block;
+    }
+    #status.success {
+      background: #efe;
+      color: #060;
+      display: block;
+    }
+    #results {
+      max-height: 250px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      display: none;
+    }
+    #results.show {
+      display: block;
+    }
+    textarea {
+      width: 100%;
+      height: 180px;
+      font-family: monospace;
+      font-size: 11px;
+      padding: 8px;
+      border: none;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .copy-btn {
+      background: #057642;
+      margin-top: 8px;
+    }
+    .copy-btn:hover {
+      background: #045630;
+    }
+    .stats {
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>LinkedIn Analytics Scraper</h1>
+
+  <div class="section">
+    <div class="section-title">Date Range</div>
+    <div class="row">
+      <label>From:</label>
+      <select id="dateFrom">
+        <option value="1">1d</option>
+        <option value="2">2d</option>
+        <option value="3">3d</option>
+        <option value="4">4d</option>
+        <option value="5">5d</option>
+        <option value="6">6d</option>
+        <option value="7" selected>1w</option>
+        <option value="14">2w</option>
+        <option value="21">3w</option>
+        <option value="30">1mo</option>
+        <option value="60">2mo</option>
+        <option value="90">3mo</option>
+      </select>
+      <label>To:</label>
+      <select id="dateTo">
+        <option value="0" selected>Now</option>
+        <option value="1">1d ago</option>
+        <option value="2">2d ago</option>
+        <option value="3">3d ago</option>
+        <option value="7">1w ago</option>
+        <option value="14">2w ago</option>
+        <option value="30">1mo ago</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Include in Export</div>
+    <div class="checkboxes">
+      <label class="checkbox-item">
+        <input type="checkbox" id="incImpressions" checked>
+        Impressions
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="incReactions" checked>
+        Reactions
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="incComments" checked>
+        Comments
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="incReposts" checked>
+        Reposts
+      </label>
+    </div>
+  </div>
+
+  <button id="scrapeBtn">Scrape Posts</button>
+
+  <div id="status"></div>
+
+  <div id="results">
+    <textarea id="output" readonly></textarea>
+  </div>
+
+  <button id="copyBtn" class="copy-btn" style="display:none;">Copy to Clipboard</button>
+
+  <div id="stats" class="stats"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
