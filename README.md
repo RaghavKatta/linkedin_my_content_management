@@ -1,8 +1,10 @@
 # LinkedIn Analytics Scraper
 
+> **LINKEDIN, PLEASE DON'T BAN ME!** This tool is designed to be helpful for creators tracking their own content performance. It's meant for occasional use (like once a week) for campaign/creator tracking. Just a simple LinkedIn creator tool for personal analytics.
+
 A Chrome extension to scrape and export your own LinkedIn post analytics (impressions, reactions, comments, reposts) for tracking and analysis.
 
-Can help you get analytics for YOUR OWN LinkedIn posts. Useful for people participating in employee content or UGC programs.
+Useful for people participating in employee content programs, UGC campaigns, or anyone who wants to track their LinkedIn content performance over time.
 
 ![Extension Screenshot](screenshot.png)
 
