@@ -142,25 +142,54 @@ function scrapePosts(dateFrom, dateTo) {
       // Filter by date range: dateTo <= daysAgo <= dateFrom
       if (daysAgo > dateFrom || daysAgo < dateTo) return;
 
-      // Get reactions
+      // Get reactions - multiple fallback strategies
       let reactions = 0;
-      const reactionsBtn = postContainer?.querySelector('[aria-label*="reaction"]');
+      const reactionsBtn = postContainer?.querySelector('button[data-reaction-details]') ||
+                           postContainer?.querySelector('.social-details-social-counts__reactions button');
       if (reactionsBtn) {
-        reactions = parseInt(reactionsBtn.getAttribute('aria-label').replace(/[^0-9]/g, '')) || 0;
+        const ariaLabel = reactionsBtn.getAttribute('aria-label') || '';
+
+        // Check for "You and X others" format (means 1 + X)
+        const youAndOthersMatch = ariaLabel.match(/you and (\d+) others?/i);
+        if (youAndOthersMatch) {
+          reactions = parseInt(youAndOthersMatch[1]) + 1;
+        } else {
+          // Try to extract number from aria-label like "48 reactions"
+          const numMatch = ariaLabel.match(/(\d+)/);
+          if (numMatch) {
+            reactions = parseInt(numMatch[1]) || 0;
+          }
+        }
+
+        // Fallback: try the visible count span
+        if (reactions === 0) {
+          const countSpan = reactionsBtn.querySelector('.social-details-social-counts__reactions-count');
+          if (countSpan) {
+            const countText = countSpan.textContent.trim();
+            reactions = parseInt(countText.replace(/[^0-9]/g, '')) || 0;
+          }
+        }
       }
 
-      // Get comments
+      // Get comments - look for the comments button in social counts
       let comments = 0;
-      const commentsBtn = postContainer?.querySelector('[aria-label*="comment"]');
+      const commentsBtn = postContainer?.querySelector('.social-details-social-counts__comments button[aria-label*="comment"]') ||
+                          postContainer?.querySelector('button[aria-label*="comment"]');
       if (commentsBtn) {
-        comments = parseInt(commentsBtn.getAttribute('aria-label').replace(/[^0-9]/g, '')) || 0;
+        const ariaLabel = commentsBtn.getAttribute('aria-label');
+        if (ariaLabel) {
+          comments = parseInt(ariaLabel.replace(/[^0-9]/g, '')) || 0;
+        }
       }
 
-      // Get reposts
+      // Get reposts - look for reposts button in social counts
       let reposts = 0;
-      const repostsBtn = postContainer?.querySelector('[aria-label*="repost"]');
+      const repostsBtn = postContainer?.querySelector('button[aria-label*="repost"]');
       if (repostsBtn) {
-        reposts = parseInt(repostsBtn.getAttribute('aria-label').replace(/[^0-9]/g, '')) || 0;
+        const ariaLabel = repostsBtn.getAttribute('aria-label');
+        if (ariaLabel) {
+          reposts = parseInt(ariaLabel.replace(/[^0-9]/g, '')) || 0;
+        }
       }
 
       posts.push({ postUrl, impressions, date, reactions, comments, reposts });
