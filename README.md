@@ -40,20 +40,23 @@ Can help you get analytics for YOUR OWN LinkedIn posts. Useful for people partic
 
 ## Usage
 
-1. Go to your LinkedIn activity page:
+1. Go to your LinkedIn profile and navigate to your **"All activity"** page:
    ```
    https://www.linkedin.com/in/YOUR-USERNAME/recent-activity/all/
    ```
+   Or: Profile → Activity section → "Show all activity"
 
-2. Click the extension icon in your toolbar
+2. Click the **"Posts"** tab to filter to your original posts (not reposts)
 
-3. Configure your settings:
+3. Click the extension icon in your toolbar
+
+4. Configure your settings:
    - **Date Range**: Select "From" and "To" dates
    - **Include in Export**: Check which metrics you want
 
-4. Click **Scrape Posts**
+5. Click **Scrape Posts**
 
-5. Click **Copy to Clipboard** and paste directly into Google Sheets
+6. Click **Copy to Clipboard** and paste directly into Google Sheets
 
 ## Date Range Options
 
