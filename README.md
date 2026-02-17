@@ -6,7 +6,7 @@ A Chrome extension to scrape and export your own LinkedIn post analytics (impres
 
 Useful for people participating in employee content programs, UGC campaigns, or anyone who wants to track their LinkedIn content performance over time.
 
-<!-- Add screenshot: save as screenshot.png and commit, or use: ![Screenshot](https://github.com/RaghavKatta/linkedin_my_content_management/blob/main/screenshot.png?raw=true) -->
+![Extension UI](images/extension-ui.png)
 
 ## Features
 
@@ -36,6 +36,8 @@ Useful for people participating in employee content programs, UGC campaigns, or 
 
 3. Enable **Developer mode** (toggle in top-right corner)
 
+   ![Developer Mode](images/developer-mode.png)
+
 4. Click **Load unpacked** and select the cloned folder
 
 5. Pin the extension for easy access (click puzzle icon → pin)
@@ -49,6 +51,8 @@ Useful for people participating in employee content programs, UGC campaigns, or 
    Or: Profile → Activity section → "Show all activity"
 
 2. Click the **"Posts"** tab to filter to your original posts (not reposts)
+
+   ![LinkedIn Activity Page](images/linkedin-activity.png)
 
 3. Click the extension icon in your toolbar
 
