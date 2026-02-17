@@ -6,7 +6,7 @@ A Chrome extension to scrape and export your own LinkedIn post analytics (impres
 
 Useful for people participating in employee content programs, UGC campaigns, or anyone who wants to track their LinkedIn content performance over time.
 
-![Extension Screenshot](screenshot.png)
+<!-- Add screenshot: save as screenshot.png and commit, or use: ![Screenshot](https://github.com/RaghavKatta/linkedin_my_content_management/blob/main/screenshot.png?raw=true) -->
 
 ## Features
 
